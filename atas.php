@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +26,7 @@
 				 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">Brand</a>
+				</button> <a class="navbar-brand" href="#">Diklat PHP</a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
@@ -33,9 +36,14 @@
 							 <a class="nav-link" href="#">Link</a>
 						</li>
 						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
+							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Latihan</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
+							<a class="dropdown-item" href="form_nilai2.php">Form Nilai</a> 
+								 <a class="dropdown-item" href="form_belanja.php">Form Belanja</a> 
+								 <a class="dropdown-item" href="array_siswa.php">Array Siswa</a>
+									
+
+								<a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
 								<div class="dropdown-divider">
 								</div> <a class="dropdown-item" href="#">Separated link</a>
 							</div>
@@ -51,14 +59,33 @@
 						<li class="nav-item active">
 							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
 						</li>
+						<?php
+							     if(isset($_SESSION['USERNAME'])){
+						?>
 						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
+						
+							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
+							   
+								<?=$_SESSION['USERNAME']?>;
+								
+							 </a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
+								<?php 
+								   if(isset($_SESSION['USERNAME'])) {
+							     ?>
+							<a class="dropdown-item" href="logout.php">Logout</a> 
+								<?php } ?>
+								 <a class="dropdown-item" href="#">Another action</a> 
+								 <a class="dropdown-item" href="#">Something else here</a>
 								<div class="dropdown-divider">
 								</div> <a class="dropdown-item" href="#">Separated link</a>
 							</div>
 						</li>
+					    <?php 
+						   }else{
+							   echo '<a class="nav-link" href="login.php">Login</a>';
+						   }
+						?>
 					</ul>
 				</div>
 			</nav>
